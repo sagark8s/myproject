@@ -1,0 +1,13 @@
+DB_DIALECT=postgres
+DB_PORT=5432
+DB_PASSWORD=postgres
+DB_USER=postgres
+DB_NAME=postgres
+DB_HOST=localhost
+CONFIG_DB=sqlite:///config.db
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USERNAME=kiran_test@gmail.com
+EMAIL_PASSWORD=yxhfrdfutoehyxcn
+EMAIL_FROM=kiran_test@gmail.com

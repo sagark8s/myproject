@@ -1,0 +1,757 @@
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [100404]
+INFO:     Started server process [100436]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [100437]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [100436]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [100437]
+INFO:     Stopping parent process [100404]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [100586]
+INFO:     Started server process [100617]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [100618]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [100617]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [100618]
+INFO:     Stopping parent process [100586]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [106852]
+INFO:     Started server process [106883]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [106884]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [106883]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [106884]
+INFO:     Stopping parent process [106852]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [107205]
+INFO:     Started server process [107240]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [107242]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [107240]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [107242]
+INFO:     Stopping parent process [107205]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [108085]
+INFO:     Started server process [108121]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [108122]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [108121]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [108122]
+INFO:     Stopping parent process [108085]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [108944]
+INFO:     Started server process [108975]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [108976]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 98, in receive
+    return self.receive_nowait()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 93, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 78, in call_next
+    message = await recv_stream.receive()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 118, in receive
+    raise EndOfStream
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 435, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/applications.py", line 284, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 14, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 58, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 241, in app
+    raw_response = await run_endpoint_function(
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 167, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/azureuser/stb_cognitive_insights/app.py", line 109, in chat
+    result = pipeline_obj.get_api_response()
+AttributeError: 'dict' object has no attribute 'get_api_response'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 98, in receive
+    return self.receive_nowait()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 93, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 78, in call_next
+    message = await recv_stream.receive()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 118, in receive
+    raise EndOfStream
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 435, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/applications.py", line 284, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 14, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 58, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 241, in app
+    raw_response = await run_endpoint_function(
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 167, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/azureuser/stb_cognitive_insights/app.py", line 109, in chat
+    result = pipeline_obj.get_api_response()
+AttributeError: 'dict' object has no attribute 'get_api_response'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 98, in receive
+    return self.receive_nowait()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 93, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 78, in call_next
+    message = await recv_stream.receive()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 118, in receive
+    raise EndOfStream
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 435, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/applications.py", line 284, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 14, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 58, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 241, in app
+    raw_response = await run_endpoint_function(
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 167, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/azureuser/stb_cognitive_insights/app.py", line 109, in chat
+    result = pipeline_obj.get_api_response()
+AttributeError: 'dict' object has no attribute 'get_api_response'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 98, in receive
+    return self.receive_nowait()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 93, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 78, in call_next
+    message = await recv_stream.receive()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 118, in receive
+    raise EndOfStream
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 435, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/applications.py", line 284, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 14, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 58, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 241, in app
+    raw_response = await run_endpoint_function(
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 167, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/azureuser/stb_cognitive_insights/app.py", line 109, in chat
+    result = pipeline_obj.get_api_response()
+AttributeError: 'dict' object has no attribute 'get_api_response'
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [108975]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [108976]
+INFO:     Stopping parent process [108944]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [109635]
+INFO:     Started server process [109666]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [109667]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [109666]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [109667]
+INFO:     Stopping parent process [109635]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [109794]
+INFO:     Started server process [109826]
+INFO:     Waiting for application startup.
+INFO:     Started server process [109825]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [109825]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [109826]
+INFO:     Stopping parent process [109794]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [110034]
+INFO:     Started server process [110066]
+INFO:     Waiting for application startup.
+INFO:     Started server process [110065]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110065]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110066]
+INFO:     Stopping parent process [110034]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [110381]
+INFO:     Started server process [110418]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [110417]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110417]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110418]
+INFO:     Stopping parent process [110381]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [110517]
+INFO:     Started server process [110549]
+INFO:     Waiting for application startup.
+INFO:     Started server process [110550]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110549]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110550]
+INFO:     Stopping parent process [110517]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [111139]
+INFO:     Started server process [111172]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [111173]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111172]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111173]
+INFO:     Stopping parent process [111139]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [111315]
+INFO:     Started server process [111347]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [111346]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111346]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111347]
+INFO:     Stopping parent process [111315]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [111451]
+INFO:     Started server process [111482]
+INFO:     Waiting for application startup.
+INFO:     Started server process [111483]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111482]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111483]
+INFO:     Stopping parent process [111451]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [111884]
+INFO:     Started server process [111919]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [111920]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111919]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111920]
+INFO:     Stopping parent process [111884]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [112211]
+INFO:     Started server process [112248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [112247]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112247]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112248]
+INFO:     Stopping parent process [112211]
+Traceback (most recent call last):
+  File "app.py", line 21, in <module>
+    from conversation.qna import run_query_pipeline
+  File "/home/azureuser/stb_cognitive_insights/conversation/qna.py", line 7, in <module>
+    from text_qna.qna import TextQnA
+  File "/home/azureuser/stb_cognitive_insights/text_qna/qna.py", line 1, in <module>
+    from .pg_semantic_search import semantic_search
+  File "<fstring>", line 1
+    (data[1][i].('url: ',''))
+                ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "app.py", line 21, in <module>
+    from conversation.qna import run_query_pipeline
+  File "/home/azureuser/stb_cognitive_insights/conversation/qna.py", line 7, in <module>
+    from text_qna.qna import TextQnA
+  File "/home/azureuser/stb_cognitive_insights/text_qna/qna.py", line 1, in <module>
+    from .pg_semantic_search import semantic_search
+  File "<fstring>", line 1
+    (data[1][i].('url: ',''))
+                ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "app.py", line 21, in <module>
+    from conversation.qna import run_query_pipeline
+  File "/home/azureuser/stb_cognitive_insights/conversation/qna.py", line 7, in <module>
+    from text_qna.qna import TextQnA
+  File "/home/azureuser/stb_cognitive_insights/text_qna/qna.py", line 1, in <module>
+    from .pg_semantic_search import semantic_search
+  File "<fstring>", line 1
+    (data[1][i].('url: ',''))
+                ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "app.py", line 21, in <module>
+    from conversation.qna import run_query_pipeline
+  File "/home/azureuser/stb_cognitive_insights/conversation/qna.py", line 7, in <module>
+    from text_qna.qna import TextQnA
+  File "/home/azureuser/stb_cognitive_insights/text_qna/qna.py", line 1, in <module>
+    from .pg_semantic_search import semantic_search
+  File "<fstring>", line 1
+    (data[1][i].('url: ',''))
+                ^
+SyntaxError: invalid syntax
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [112516]
+INFO:     Started server process [112549]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [112548]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112548]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112549]
+INFO:     Stopping parent process [112516]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [112660]
+INFO:     Started server process [112691]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [112692]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112691]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112692]
+INFO:     Stopping parent process [112660]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [112775]
+INFO:     Started server process [112807]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [112808]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112807]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112808]
+INFO:     Stopping parent process [112775]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [113900]
+INFO:     Started server process [113931]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [113932]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [113931]
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [113932]
+INFO:     Stopping parent process [113900]
+INFO:     Uvicorn running on http://0.0.0.0:8518 (Press CTRL+C to quit)
+INFO:     Started parent process [114080]
+INFO:     Started server process [114111]
+INFO:     Waiting for application startup.
+INFO:     Started server process [114112]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Application startup complete.
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 98, in receive
+    return self.receive_nowait()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 93, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 78, in call_next
+    message = await recv_stream.receive()
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/anyio/streams/memory.py", line 118, in receive
+    raise EndOfStream
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 435, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/applications.py", line 284, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 184, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 14, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/azureuser/stb_cognitive_insights/middleware.py", line 58, in dispatch
+    response = await call_next(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 241, in app
+    raw_response = await run_endpoint_function(
+  File "/home/azureuser/unica_cognitive_insights/lib/python3.8/site-packages/fastapi/routing.py", line 167, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/home/azureuser/stb_cognitive_insights/app.py", line 93, in chat
+    bg=bg.replace(' ','')
+AttributeError: 'NoneType' object has no attribute 'replace'
