@@ -1,7 +1,7 @@
 DB_DIALECT=postgres
 DB_PORT=5432
-DB_PASSWORD=postgres
+DB_PASSWORD=Admin@12345$
 DB_USER=postgres
 DB_NAME=postgres
-DB_HOST=localhost
+DB_HOST=covalense-pg-vector-staging.postgres.database.azure.com
 CONFIG_DB=sqlite:///config.db
