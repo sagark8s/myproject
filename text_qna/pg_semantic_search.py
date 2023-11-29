@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine,URL,text
+from sqlalchemy import create_engine,text
 import pandas as pd
 from openai_config import load_openai
 from openai.embeddings_utils import get_embedding
@@ -7,15 +7,18 @@ openai = load_openai()
 from rich.console import Console
 console = Console()
 from generate_map import generate_map
-connection_string = URL.create(
-'postgresql+psycopg2',
-username='postgres',
-password='postgres',  # plain (unescaped) text
-host='127.0.0.1',
-database='postgres',
-)
+# connection_string = URL.create(
+# 'postgresql+psycopg2',
+# username='postgres',
+# password='postgres',  # plain (unescaped) text
+# host='127.0.0.1',
+# database='postgres',
+# )
+from database_config import load_conn,base_ip,main_table_name,faq_table_name
+connection_string = load_conn()
 #http://127.0.0.1:8512/generate_map/?c=-4.3478359,55.83289869999999&name=vishnu
-base_ip='20.193.133.240:8518'
+# base_ip='20.193.133.240:8518'
+print(f"TABLE_NAME - {main_table_name}")
 get_map_url = lambda name : f"http://{base_ip}/generate_map/?name={name}"
 get_product_url = lambda url,product_name : f"""url: https://seychelles.com/listingdetails/{url}"""
 engine = create_engine(connection_string)
@@ -26,7 +29,7 @@ def semantic_search_id(field,query_field,query):
     embedding = get_embedding(query, engine = 'text-embedding-ada-002')
     #print(embedding)
     query = text(f"""SELECT {field}, 1- ({query_field}  <-> '{embedding}') as cos_sim
-    from stb_vector_data_store ORDER BY cos_sim desc LIMIT 5""")
+    from {main_table_name} ORDER BY cos_sim desc LIMIT 5""")
     #query = text(f"SELECT {field}   from stb_vector_data_store ORDER BY {query_field} <-> '{embedding}' LIMIT 5")
     try:result = conn.execute(query).fetchall()
     except Exception as e:print(e)
@@ -35,7 +38,7 @@ def semantic_search_id(field,query_field,query):
     #return list(set([i[0] for i in result]))
 
 def get_text_from_id(field,ids):
-    query = text(f"""SELECT stb_vector_data_store.{field},"productId","productName","boundary","productImage","productDescription"  from stb_vector_data_store where index in {tuple(ids)}""")
+    query = text(f"""SELECT {main_table_name}.{field},"productId","productName","boundary","productImage","productDescription"  from {main_table_name} where index in {tuple(ids)}""")
     result = [list(i) for i in conn.execute(query).fetchall()]
     for i in range(len(result)):
         result[i][1]=get_product_url(result[i][1],result[i][2])
@@ -44,7 +47,7 @@ def get_text_from_id(field,ids):
 
 def semantic_search_faq(query,query_field='about_vector'):
     embedding = get_embedding(query, engine = 'text-embedding-ada-002')
-    query = text(f"SELECT about,link,1- ({query_field}  <-> '{embedding}') as cos_sim from stb_vector_faq_store ORDER BY cos_sim desc LIMIT 5")
+    query = text(f"SELECT about,link,1- ({query_field}  <-> '{embedding}') as cos_sim from {faq_table_name} ORDER BY cos_sim desc LIMIT 5")
     try:result = conn.execute(query).fetchall()
     except Exception as e:print(e)
     return pd.DataFrame(result)
