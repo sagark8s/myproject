@@ -18,11 +18,32 @@ from database_config import load_conn,base_ip,main_table_name,faq_table_name
 connection_string = load_conn()
 #http://127.0.0.1:8512/generate_map/?c=-4.3478359,55.83289869999999&name=vishnu
 # base_ip='20.193.133.240:8518'
-print(f"TABLE_NAME - {main_table_name}")
+print(f"pg_semantic_search TABLE_NAME - {main_table_name}")
 get_map_url = lambda name : f"http://{base_ip}/generate_map/?name={name}"
 get_product_url = lambda url,product_name : f"""url: https://seychelles.com/listingdetails/{url}"""
 engine = create_engine(connection_string)
 conn = engine.connect()
+
+def default_page():
+    print("pg_semantic Startup_image_link")
+    query = text(f"""WITH ranked_products AS ( SELECT "category","productName", "productImage", ROW_NUMBER() OVER (PARTITION BY "category" ORDER BY RANDOM()) AS row_num
+    FROM {main_table_name} ) SELECT "category","productName", "productImage" FROM ranked_products WHERE row_num <= 3""")
+    result =[]
+    try:result = conn.execute(query).fetchall()
+    except Exception as e:print(e)
+    print("*"*80)
+    print("result :",result)
+    print("*"*80)
+    dict_list = []
+    for item in result:
+        category_type, description, image_url = item
+        data_dict = {
+            'category_type': category_type,
+            'description': description,
+            'image_url': image_url
+        }
+        dict_list.append(data_dict)
+    return dict_list
 
 def semantic_search_id(field,query_field,query):
     query = query.lower().strip()
@@ -44,14 +65,12 @@ def get_text_from_id(field,ids):
         result[i][1]=get_product_url(result[i][1],result[i][2])
     return ['\n'.join(i[0:2]) for i in result],pd.DataFrame(result)
 
-
 def semantic_search_faq(query,query_field='about_vector'):
     embedding = get_embedding(query, engine = 'text-embedding-ada-002')
     query = text(f"SELECT about,link,1- ({query_field}  <-> '{embedding}') as cos_sim from {faq_table_name} ORDER BY cos_sim desc LIMIT 5")
     try:result = conn.execute(query).fetchall()
     except Exception as e:print(e)
     return pd.DataFrame(result)
-
 
 def semantic_search(query): 
     address_field = 'full_address_vector'

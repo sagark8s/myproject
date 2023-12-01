@@ -19,6 +19,7 @@ from database.samodels import *
 from router import api_router
 from database.database import engine
 from conversation.qna import run_query_pipeline
+from text_qna.pg_semantic_search import default_page
 
 
 
@@ -85,6 +86,14 @@ async def startup_event():
     ''' Declaring global multiprocessing dictionary '''
 
 ''' The above variable is common in global memory'''
+
+@app.post("/Startup_image_link")
+async def default_page_result():
+    ''' Startup Page image'''
+    # response = {}
+    print("Startup_image_link")
+    result = default_page()
+    return result
 
 
 @app.post("/chat")
@@ -197,3 +206,4 @@ admin.add_model_view(text_qna_config_admin_model)
 
 if __name__ == "__main__":
     uvicorn.run("app:app", reload =False, host="0.0.0.0",port=8518,workers=2)
+    # uvicorn.run("app:app", reload =True, host="0.0.0.0",port=8590)
