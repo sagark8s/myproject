@@ -3,7 +3,7 @@ import warnings
 warnings.filterwarnings("ignore")
 from utils.Logging import debug
 ''' if linux set True , windows set False '''
-from fastapi import FastAPI,Request,Cookie,BackgroundTasks
+from fastapi import FastAPI,Request,Cookie,BackgroundTasks,Response
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 ''' For starting separate process and then killing after time out'''
@@ -21,7 +21,9 @@ from database.database import engine
 from conversation.qna import run_query_pipeline
 from text_qna.pg_semantic_search import default_page
 
-
+import os, sys
+from pymessenger import Bot
+import requests
 
 ''' Rich text formatting for better view in terminal '''
 ''' Refresh embeddings '''
@@ -70,6 +72,76 @@ from monitor.utils import MonitorPipeLineObject
 import hashlib
 create_cache_key = lambda x : str(hashlib.md5(x.encode()).hexdigest())
 session_id_dict = {}
+
+''' Facebook Omini channel integration '''
+#Facebook Access Token
+PAGE_ACCESS_TOKEN = 'EAAJfigqiucgBOZBWsu5bg2ZConn04ZCWKJOZA4eosPu5sDhYZAy1Uh2T9l5Wr9m9JKdUq3DXhkjHYNtAv2jqQZAASF9X3LlTlUYayIa8EuG3NIUOMvtMrUiurwabKGbquLwNGwBNwrsBbgjIqO4Hg4Ar2sdtZA62DByikZBRO86bZA1ddrboZAUqTRmNZCoOrA9hoZAlnAe51d8b'
+bot = Bot(PAGE_ACCESS_TOKEN)
+
+''' Webhook connection '''
+@app.get("/fb_verify")
+async def verify(request: Request):
+    try:
+        print(request.query_params)
+        mode = request.query_params['hub.mode']
+        print("mode",mode)
+        challenge = request.query_params['hub.challenge']
+        print("challenge",challenge)
+        token = request.query_params['hub.verify_token']
+        print(token,"token")
+        if mode and token:
+            if mode == 'subscribe' and token == 'hello':
+                print("WEBHOOK_VERIFIED")
+                return int(challenge)                     
+            else:
+                raise Exception("Not valid token")
+        else:
+            raise Exception("Not valid token")
+    except Exception as e:
+        print("Error", str(e))
+    return {"code": 403, 'message':'test'}
+
+#method
+def process_message(text):
+    formatted_data = text
+    if formatted_data == "test":
+        response = "Successfully"
+    elif formatted_data == 'hi':
+        response = "hellos"
+    else:
+        response = "completed"
+    return response
+
+#working for method
+@app.post("/fb_verify")
+async def webhook(request: Request,bg: str = Cookie(None),business_group=Cookie(None)):
+    data = await request.json()
+    event = data['entry'][0]['messaging']
+    print("event:",event)
+    for message in event:
+        text = message['message']['text']
+        sender_id = message['sender']['id']        
+        console.log(f'bg={bg} ; business_group={business_group}',style='red')
+        request_id = str(time.time())
+        session_id = request.headers['user_id']
+        msft_principal_name = 'X-Ms-Client-Principal-Name'
+        chat_history = await request.json()
+        try:
+            pipeline_obj = MonitorPipeLineObject(user_id=session_id,history=[{'user':f'{text}'}], query=text,latest_query=text)
+        except Exception as e:
+            print(e)
+        console.print('Starting Gpt Pipeline \n Created pipeline object : ',style='green1')
+        pipeline_obj = run_query_pipeline(pipeline_obj,configs=configs)
+        result = pipeline_obj.get_api_response()
+
+        result = result['answer']
+        print("144 result :",len(result))
+        print("145 result :",result)
+        del pipeline_obj
+        
+        output = bot.send_text_message(sender_id, result)
+        print("150 output :",output)
+        return result
 
 manager=None
 return_dict=None
@@ -203,7 +275,6 @@ admin = Admin(app, engine)
 admin.add_model_view(conversation_qna_config_admin_model)
 admin.add_model_view(text_qna_config_admin_model)
 
-
 if __name__ == "__main__":
     uvicorn.run("app:app", reload =False, host="0.0.0.0",port=8518,workers=2)
-    # uvicorn.run("app:app", reload =True, host="0.0.0.0",port=8590)
+    # uvicorn.run("app:app", reload =False,host="127.0.0.1", port=8501)

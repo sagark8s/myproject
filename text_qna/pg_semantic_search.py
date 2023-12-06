@@ -24,6 +24,49 @@ get_product_url = lambda url,product_name : f"""url: https://seychelles.com/list
 engine = create_engine(connection_string)
 conn = engine.connect()
 
+menu = {
+    "Plan your visit" : [
+                        { "category_type": "Accommodation",
+                          "link": "https://seychelles.com/planyourvisit/wheretostay" 
+                        },
+                        { "category_type": "Geeting Around",
+                          "link": "https://seychelles.com/planyourvisit/gettingaround" 
+                        },
+                        { "category_type": "Tour Operators",
+                          "link": "https://seychelles.com/planyourvisit/touroperators" 
+                        },
+                        { "category_type": "Travel Information",
+                          "link": "https://seychelles.com/travelinfo/travelinformation" 
+                        },
+                        { "category_type": "About Seychelles",
+                          "link": "https://seychelles.com/aboutus/aboutseychelles" 
+                        },
+                        { "category_type": "Airlines",
+                          "link": "https://seychelles.com/planyourvisit/airlines" 
+                        }], 
+     "Experience" :     [{ "category_type": "Activities",
+                          "link": "https://seychelles.com/experience/activities" 
+                        },
+                        { "category_type": "Walks & Trails",
+                          "link": "https://seychelles.com/experience/walksandtrails" 
+                        },
+                        { "category_type": "General Servies",
+                          "link": "https://seychelles.com/experience/generalservices" 
+                        },
+                        { "category_type": "Attractions",
+                          "link": "https://seychelles.com/experience/attractions" 
+                        },
+                        { "category_type": "Food & Drinks",
+                          "link": "https://seychelles.com/experience/food-drinks" 
+                        },
+                        { "category_type": "Events",
+                          "link": "https://seychelles.com/experience/events" 
+                        }],
+     "The Islands" :     { "category_type": "The Islands",
+                          "link": "https://seychelles.com/experience/theislands" 
+                        }
+}
+
 def default_page():
     print("pg_semantic Startup_image_link")
     query = text(f"""WITH ranked_products AS ( SELECT "category","productName", "productImage", ROW_NUMBER() OVER (PARTITION BY "category" ORDER BY RANDOM()) AS row_num
