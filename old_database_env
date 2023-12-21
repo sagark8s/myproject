@@ -1,0 +1,6 @@
+DB_PORT=5432
+DB_PASSWORD=Admin@12345$
+DB_USER=postgres
+DB_NAME=postgres
+DB_HOST=covalense-pg-vector-staging.postgres.database.azure.com
+DB_TABLE_NAME=stb_vector_data_store

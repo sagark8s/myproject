@@ -1,19 +1,17 @@
 from sqlalchemy import create_engine,text
 import pandas as pd
 from openai_config import load_openai
+# import openai
+# from openai.embeddings_utils import get_embedding
+
+import openai
 from openai.embeddings_utils import get_embedding
 import traceback
 openai = load_openai()
 from rich.console import Console
 console = Console()
 from generate_map import generate_map
-# connection_string = URL.create(
-# 'postgresql+psycopg2',
-# username='postgres',
-# password='postgres',  # plain (unescaped) text
-# host='127.0.0.1',
-# database='postgres',
-# )
+
 from database_config import load_conn,base_ip,main_table_name,faq_table_name
 connection_string = load_conn()
 #http://127.0.0.1:8512/generate_map/?c=-4.3478359,55.83289869999999&name=vishnu
@@ -69,8 +67,8 @@ menu = {
 
 def default_page():
     print("pg_semantic Startup_image_link")
-    query = text(f"""WITH ranked_products AS ( SELECT "category","productName", "productImage", ROW_NUMBER() OVER (PARTITION BY "category" ORDER BY RANDOM()) AS row_num
-    FROM {main_table_name} ) SELECT "category","productName", "productImage" FROM ranked_products WHERE row_num <= 3""")
+    query = text(f"""WITH ranked_products AS ( SELECT "Category","productName", "productImage", ROW_NUMBER() OVER (PARTITION BY "Category" ORDER BY RANDOM()) AS row_num
+    FROM {main_table_name} ) SELECT "Category","productName", "productImage" FROM ranked_products WHERE row_num <= 3""")
     result =[]
     try:result = conn.execute(query).fetchall()
     except Exception as e:print(e)
@@ -83,7 +81,7 @@ def default_page():
         data_dict = {
             'category_type': category_type,
             'description': description,
-            'image_url': image_url
+            'image_url': image_url,
         }
         dict_list.append(data_dict)
     return dict_list

@@ -1,5 +1,5 @@
 from sqlalchemy import URL
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 import pandas as pd
 from rich.console import Console
 console = Console()
