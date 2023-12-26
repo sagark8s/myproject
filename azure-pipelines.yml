@@ -16,4 +16,3 @@ steps:
     D_USERNAME: $(DOCKER_USERNAME)
     D_PASSWORD: $(DOCKER_PASSWORD)
     BUILD_ID: $(Build.BuildNumber)
-    #
