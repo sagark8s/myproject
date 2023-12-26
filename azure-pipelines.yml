@@ -1,0 +1,18 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- group: SECRETS
+
+steps:
+- task: Bash@3
+  displayName: 'Build docker image'
+  inputs:
+    filePath: 'build.sh'
+  env:
+    D_USERNAME: $(DOCKER_USERNAME)
+    D_PASSWORD: $(DOCKER_PASSWORD)
+    BUILD_ID: $(Build.BuildNumber)
