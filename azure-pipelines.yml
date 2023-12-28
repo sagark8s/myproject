@@ -21,7 +21,7 @@ steps:
   inputs:
     sshEndpoint: myazurevm
     commands: |
-     docker pull containerregistry1z.azurecr.io/cglense:BUILD_ID
-     docker run -d -p 8501:8501 containerregistry1z.azurecr.io/cglense:BUILD_ID
+     docker pull containerregistry1z.azurecr.io/cglense:$(Build.BuildNumber)
+     docker run -d -p 8501:8501 containerregistry1z.azurecr.io/cglense:$(Build.BuildNumber)
   env:
     BUILD_ID: $(Build.BuildNumber)
