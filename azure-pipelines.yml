@@ -12,10 +12,6 @@ steps:
   displayName: 'Build docker image'
   inputs:
     filePath: 'build.sh'
-  env:
-    D_USERNAME: $(DOCKER_USERNAME)
-    D_PASSWORD: $(DOCKER_PASSWORD)
-    BUILD_ID: $(Build.BuildNumber)
 - task: SSH@0
   displayName: 'Run shell commands on remote machine'
   inputs:
@@ -24,4 +20,6 @@ steps:
      docker pull containerregistry1z.azurecr.io/cglense:$(Build.BuildNumber)
      docker run -d -p 8501:8501 containerregistry1z.azurecr.io/cglense:$(Build.BuildNumber)
   env:
+    D_USERNAME: $(DOCKER_USERNAME)
+    D_PASSWORD: $(DOCKER_PASSWORD)
     BUILD_ID: $(Build.BuildNumber)
