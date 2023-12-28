@@ -16,3 +16,12 @@ steps:
     D_USERNAME: $(DOCKER_USERNAME)
     D_PASSWORD: $(DOCKER_PASSWORD)
     BUILD_ID: $(Build.BuildNumber)
+- task: SSH@0
+  displayName: 'Run shell commands on remote machine'
+  inputs:
+    sshEndpoint: myazurevm
+    commands: |
+     docker pull containerregistry1z.azurecr.io/cglense:BUILD_ID
+     docker run -d -p 8501:8501 containerregistry1z.azurecr.io/cglense:BUILD_ID
+  env:
+    BUILD_ID: $(Build.BuildNumber)
