@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         containerRegistryName = 'containerregistry1z.azurecr.io'
-        dockerImageName = 'ul-renewables'
+        dockerImageName = 'stb'
     }
 
     stages {
@@ -40,7 +40,7 @@ pipeline {
                     sh "docker pull ${containerRegistryName}/${dockerImageName}:${env.BUILD_NUMBER}"
                     
                     // Run the Docker container with the pulled image
-                    sh "docker run --name ul-renewables -d -p 8560:8560 ${containerRegistryName}/${dockerImageName}:${env.BUILD_NUMBER}"
+                    sh "docker run --name stb -d -p 8501:8501 ${containerRegistryName}/${dockerImageName}:${env.BUILD_NUMBER}"
                 }
             }
         }
