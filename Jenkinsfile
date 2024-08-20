@@ -33,6 +33,19 @@ pipeline {
             }
         }
         
+        stage('Approval') {
+            steps {
+                script {
+                    // Approval stage for user review
+                    input message: 'Approve release to production?', 
+                          ok: 'Approve', 
+                          parameters: [
+                              string(name: 'Release Version', defaultValue: "${env.BUILD_NUMBER}", description: 'The version of the application to release.')
+                          ]
+                }
+            }
+        }
+        
         stage('Pull and Run Docker Image') {
             steps {
                 script {
