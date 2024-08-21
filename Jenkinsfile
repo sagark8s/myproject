@@ -32,37 +32,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Notify Approver') {
-            steps {
-                script {
-                    emailext(
-                        to: 'sagark8s@outlook.com',
-                        subject: "Approval Required for Build #${env.BUILD_NUMBER}",
-                        body: """\
-Hello,
-
-A new build #${env.BUILD_NUMBER} is ready for release. Please review and approve the release to proceed.
-
-Thank you!
-"""
-                    )
-                }
-            }
-        }
-
-        stage('Approval') {
-            steps {
-                script {
-                    // Manual approval with notification message
-                    input message: 'Please review and approve the release. Note: This build requires approval from sagark8s@outlook.com.',
-                          ok: 'Approve',
-                          parameters: [
-                              string(name: 'Release Version', defaultValue: "${env.BUILD_NUMBER}", description: 'The version of the application to release.')
-                          ]
-                }
-            }
-        }
         
         stage('Pull and Run Docker Image') {
             steps {
@@ -77,4 +46,3 @@ Thank you!
         }
     }
 }
-
