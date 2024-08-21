@@ -61,19 +61,19 @@ pipeline {
             }
         }
         
-        stage('Approve and Remove Old Docker Images') {
-            steps {
-                script {
-                    // Prompt for approval before removing old Docker images
-                    input message: 'Do you want to delete old unused Docker images?', ok: 'Yes, Delete Images'
-                    
-                    // Remove all unused Docker images
-                    sh '''
-                    # List all images that are not associated with any container
-                    docker images -q | xargs -I {} sh -c 'docker ps -q --filter "ancestor={}" | grep -q . || docker rmi {}'
-                    '''
-                }
-            }
-        }
+#        stage('Approve and Remove Old Docker Images') {
+#            steps {
+#               script {
+#                    // Prompt for approval before removing old Docker images
+#                   input message: 'Do you want to delete old unused Docker images?', ok: 'Yes, Delete Images'
+#                    
+#                   // Remove all unused Docker images
+#                    sh '''
+#                   # List all images that are not associated with any container
+#                    docker images -q | xargs -I {} sh -c 'docker ps -q --filter "ancestor={}" | grep -q . || docker rmi {}'
+#                   '''
+#                }
+#           }
+#        }
     }
 }
