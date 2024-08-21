@@ -32,10 +32,14 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Pull and Run Docker Image') {
             steps {
                 script {
+                    // Stop and remove the existing Docker container if it exists
+                    sh "docker ps -q -f name=stb | xargs -r docker stop"
+                    sh "docker ps -a -q -f name=stb | xargs -r docker rm"
+                    
                     // Pull the Docker image using the build number
                     sh "docker pull ${containerRegistryName}/${dockerImageName}:${env.BUILD_NUMBER}"
                     
@@ -44,5 +48,18 @@ pipeline {
                 }
             }
         }
+        
+        stage('Remove Unused or Exited Containers') {
+            steps {
+                script {
+                    // Remove unused or exited Docker containers
+                    sh '''
+                    # Remove all exited containers
+                    docker ps -a -q -f status=exited | xargs --no-run-if-empty docker rm
+                    '''
+                }
+            }
+        }
+        
     }
 }
