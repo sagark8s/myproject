@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- group: ACR_CRED
+- name: containerRegistryName
+  value: 'containerregistry1z.azurecr.io'
+- name: dockerImageName
+  value: 'stb'
+
+steps:
+- script: |
+    hash=$(git rev-parse HEAD)
+    echo $hash
+    echo $(Build.BuildNumber)
+    
+    docker build . -t $(dockerImageName):$hash
+    docker tag $(dockerImageName):$hash $(containerRegistryName)/$(dockerImageName):$hash
+    docker tag $(containerRegistryName)/$(dockerImageName):$hash $(containerRegistryName)/$(dockerImageName):$(Build.BuildNumber)
+    
+    echo $D_PASSWORD | docker login $(containerRegistryName) -u $D_USERNAME --password-stdin
+    docker push $(containerRegistryName)/$(dockerImageName):$(Build.BuildNumber)
+  displayName: 'Build and Push Docker Image'
+  env:
+    D_USERNAME: $(ACR_USERNAME)
+    D_PASSWORD: $(ACR_PASSWORD)
